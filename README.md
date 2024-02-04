@@ -10,7 +10,7 @@
 프로젝트 구성 인원 : 1명
 
 프로젝트 기술 스택 : TypeScript, NestJs, MySQL, AWS SES, TypeORM, JWT, PostMan
-<br>
+<br><br>
 
 ## **목표:**
 
