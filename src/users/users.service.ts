@@ -84,8 +84,9 @@ export class UsersService {
     }
   
     user.emailVerified = true;
-    user.emailVerificationToken = null;
-    await this.userRepository.save(user);
+    user.emailVerificationToken = null; // 토큰 초기화
+    console.log(user.emailVerificationToken);
+    await this.userRepository.save(user); // 변경사항 저장
   
     return { message: '이메일 인증이 완료되었습니다.' };
   }
@@ -100,7 +101,7 @@ export class UsersService {
 
     if (user && await bcrypt.compare(loginUserDto.password, user.password)) {
       // JWT 토큰 생성
-      const accessTokenPayload = { sub: user.id };
+      const accessTokenPayload = { sub: user.id, role: user.role };
       const accessToken = this.jwtService.sign(accessTokenPayload);
 
       // 중복 로그인 방지를 위해 currentToken 업데이트
